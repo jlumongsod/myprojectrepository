@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content padding>
-    <form (submit)="validateAuth()">
+    <form (submit)="validateAuth()" name="loginForm">
         <ion-list>
             <ion-item>
                 <ion-label floating>Email</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input type="text" name="femail"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label floating>Password</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" name="fpassword"></ion-input>
             </ion-item>
             <br>
             <br>
