@@ -7,16 +7,16 @@
 </ion-header>
 
 <ion-content padding>
-    <form (submit)="registerProj()">
+    <form (submit)="registerProj(project.value)">
         <ion-list>
             <ion-item>
-                <ion-label floating>Project Name</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-label>Enter Name:</ion-label>
+                <ion-input type="text" #project></ion-input>
             </ion-item>
             <br>
             <br>
             <button ion-button type="submit" block >Register</button>
-            <button ion-button block>Cancel</button>
         </ion-list>
     </form>
+    <button ion-button block (click)="cancel()">Cancel</button>
 </ion-content>
