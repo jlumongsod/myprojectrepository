@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Add Project
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form (submit)="registerProj()">
+        <ion-list>
+            <ion-item>
+                <ion-label floating>Project Name</ion-label>
+                <ion-input type="text"></ion-input>
+            </ion-item>
+            <br>
+            <br>
+            <button ion-button type="submit" block >Register</button>
+            <button ion-button block>Cancel</button>
+        </ion-list>
+    </form>
+</ion-content>
