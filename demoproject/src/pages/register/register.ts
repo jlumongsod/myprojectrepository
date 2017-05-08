@@ -19,11 +19,16 @@ export class RegisterPage {
   }
 
   //
+  //Method automatically called upon loading the screen
+  //
+  ngOnInit(){
+    this.projects = this.registerService.getProjList();
+  }
+
+  //
   //Method upon pressing Register button
   //
   registerProj(project){
-    this.projects = this.registerService.getProjList();
-    
     //check if duplicate project name
     if (this.registerService.checkDuplicate(project)){     
       this.showAlert("Project Name already exists! Please try again.");
@@ -34,11 +39,10 @@ export class RegisterPage {
 
       //go to Project Page
       this.navCtrl.push(ProjPage);
+
+      //DEBUGGING: Monitor after adding project
+      //console.log("In registerProj " + this.registerService.showProjList());
     }
-    
-    //DEBUGGING: Monitor inputted project name and project list
-    //console.log("@register.ts - input value: " + project);
-    //console.log("@register.ts - registerProj(): " + this.registerService.showProjList());
   }
 
   //
