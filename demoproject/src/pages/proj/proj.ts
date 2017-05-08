@@ -10,10 +10,13 @@ import { RegisterService } from '../../app/services/register.service';
 })
 export class ProjPage {
   projects: string[];
+  showDelete: boolean;
 
   constructor(public navCtrl: NavController,
               private registerService: RegisterService) {
 
+      //DEBUGGING: default(false), set true to show delete buttons
+      this.showDelete = true;
   }
 
   //
@@ -29,6 +32,17 @@ export class ProjPage {
   addProj(){
     //transition to Registration Page
     this.navCtrl.push(RegisterPage);
+  }
+
+  //
+  //Method upon pressing Delete button
+  //
+  deleteProj(i){
+    this.projects.splice(i, 1);
+    this.registerService.setProjList(this.projects);
+
+    //DEBUGGING: Monitor after deleting project
+    //console.log("In deleteProj " + this.registerService.showProjList());
   }
 
 }

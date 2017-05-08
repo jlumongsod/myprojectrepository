@@ -49,7 +49,7 @@ export class AuthPage {
         this.loginOK = false;        
       }
   
-      //DEBUGGING: Disable authentication/validation. Restore before Code Release
+      //DEBUGGING: Disables authentication/validation. Restore before Code Release
       //if( !this.loginOK ){
       
       //check status to proceed

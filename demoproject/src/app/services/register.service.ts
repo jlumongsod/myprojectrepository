@@ -3,13 +3,10 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class RegisterService{
-    private projListStr: string;
-    private emptyArr: string[];
+    private emptyArr: string[]; //Note: List of projects is in local storage "allProjects"
     private NO_DUPLICATE = -1;
-    private NO_CONTENT = '';
     
     constructor(){
-        this.projListStr = this.NO_CONTENT;
         this.emptyArr = [];
     }
 
@@ -17,7 +14,7 @@ export class RegisterService{
     //Method to check if project list is empty
     //
     isEmptyList(){
-        if (this.projListStr == this.NO_CONTENT){
+        if (localStorage.getItem("allProjects") == null){
             return true;
         }
         return false;
@@ -27,7 +24,7 @@ export class RegisterService{
     //Method setter for project list
     //
     setProjList(projArr: string[]){
-        this.projListStr = JSON.stringify(projArr);
+        localStorage.setItem("allProjects", JSON.stringify(projArr));
     }
 
     //
@@ -37,9 +34,9 @@ export class RegisterService{
     //Note: Return empty array instead, since json.parse will return undefined  
     getProjList(){
         if (this.isEmptyList()){
-            return this.emptyArr;   
+            return this.emptyArr;
         } else {
-            return JSON.parse(this.projListStr);
+            return JSON.parse(localStorage.getItem("allProjects"));
         }
     }
 
@@ -48,17 +45,24 @@ export class RegisterService{
     //Return:   true = duplicate exists
     //          false = no duplicate
     checkDuplicate(val: any){
-        if (this.projListStr.indexOf(val) == this.NO_DUPLICATE){
+        if (this.isEmptyList()){
             return false;
+        } else {
+            if (localStorage.getItem("allProjects").indexOf(val) == this.NO_DUPLICATE){
+                return false;
+            } else {
+                return true;
+            }
         }
-        return true;
+
     }
 
     //
     //Method to display project list in console log
     //
     showProjList(){
-        console.log("Array value: " + this.projListStr);
+        //console.log("Array value: " + this.projListStr);
+        console.log("Array value: " + localStorage.getItem("allProjects"));       
     }
 
 }
